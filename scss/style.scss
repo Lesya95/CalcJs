@@ -1,0 +1,159 @@
+$active: #EFAE02;
+
+@mixin before {
+  &::before{
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 1px;
+    background-color: $active;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+*{
+  box-sizing: border-box;
+  outline: none; //убрали подводку у input 
+}
+
+// убирает стрелки у input type=number 
+input[type='number'] {
+  -moz-appearance:textfield;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+// убирает стрелки у input type=number 
+
+body{
+  background: url(../images/bg.png) center no-repeat;
+  background-color: #707070;
+  background-size: cover;
+  height: 100vh;
+  font-family: "Open Sans", sans-serif;
+  display: flex;
+  align-items: center;
+}
+.calc{
+  width: 1072px;
+  min-height: 650px;
+  border: 2px solid $active;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: top;
+  padding: 30px ;
+}
+.tabs{
+  width: 100%;
+  padding-bottom: 35px;
+  display: flex;
+  justify-content: center;
+  .tab-left,
+  .tab-right {
+    width: 200px;
+    height: 70px;
+    border-radius: 0 15px 0 0;
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.77));
+    margin-right: 5px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #cecece;
+    text-align: center;
+    line-height: 70px;
+    cursor: pointer;
+  }
+  .active {
+    background: $active;
+    color: #000;
+    position: relative;
+    &::before{
+      content: "";
+      position: absolute;
+      width: 200px;
+      height: 1px;
+      background-color: $active;
+      left: 0;
+      bottom: -6px;
+    }
+  }
+  .tab-left {
+    border-radius: 15px 0 0 0;
+  }
+}
+.blocks {
+  width: 75%;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &__title {
+    position: relative;
+    @include before;
+    font-size: 30px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  &__counter {
+    font-size: 48px;
+    font-weight: 700;
+    color: #EFAE02;
+    width: 132px;
+    height: 60px;
+    border: 3px solid rgba($color: $active, $alpha: .6);
+    background-color: transparent;
+    text-align: center;
+  }
+  
+}
+#pages-block{
+  display: none;
+}
+
+.addiction {
+    font-size: 30px;
+    font-weight: 700;
+    color: $active;
+    line-height: 41px;
+  &__title {
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  &__block {
+    margin-bottom: 22px;
+    text-align-last: left;
+  }
+
+  &__checkbox {
+    width: 29px;
+    height: 29px;
+    opacity: 0.5;
+  }
+}
+
+.total {
+  width: 63%;
+  display: flex;
+  font-size: 36px;
+  font-weight: 700;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  &__count {
+    width: 200px;
+    height: 72px;
+    background-color: transparent;
+    border: none;
+    font-size: 56px;
+    font-weight: 700;
+    color: $active;
+    text-align: right;
+  }
+}
+
+
